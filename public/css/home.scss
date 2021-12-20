@@ -11,8 +11,11 @@ body{
     height: 100vh;
 
     background-color: $midnight-green-eagle-green;
-    //background-color: #4D194D;
     font-family: Verdana,Geneva,sans-serif;
+
+    @media(min-width: 1000px){
+        background-color: $white;
+    }
 
     .whiteboard-wrapper{
         width: 100%;
@@ -26,6 +29,12 @@ body{
 
             border-radius: 2.5%;
             background-color: rgba(255, 255, 255, .7);
+
+            @media(min-width: 1000px){
+                margin: 0;
+                width: 100%;
+                background-color: transparent;
+            }
 
             .arrow-wrapper{
                 width: 70vw;
@@ -87,6 +96,20 @@ body{
                     }
                 }
             }
+
+            .home-nav{
+                position: absolute;
+                width: 20%;
+                top: 5%;
+                left: 5%;
+                color: $midnight-green-eagle-green;
+                font-size: 4vw;
+                text-decoration: none;
+
+                &:focus{
+                    text-decoration: underline;
+                }
+            }
         
             .date-time-wrapper{
                 position: absolute;
@@ -96,6 +119,9 @@ body{
                 align-items: end;
                 
                 z-index: 1;
+
+                @media(min-width: 1000px){
+                }
                 .date{
                     margin: 5% 0 0;
                     width: 46%;
@@ -118,6 +144,10 @@ body{
             }
 
             .list{
+                @media(min-width: 1000px){
+                    width: 100%;
+                    margin: 0;
+                }
                 h2{
                     width: 36%;
                     margin-left: 5%;
@@ -126,20 +156,42 @@ body{
                     border-bottom: solid 2px $russian-violet;
                     font-size: 7vw;
                     font-weight: normal;
+
+                    @media(min-width: 1000px){
+                        margin: 5% 0 0;
+                        width: 100%;
+                        border-bottom: none;
+                        color: $skobeloff;
+                        text-align: center;
+                        text-decoration: underline .3vw $russian-violet;
+                    }
                 }
                 ul{
                     margin: 0 0 8%;
+                    
+                    @media(min-width: 1000px){
+                        padding: 0 0 0 9%;
+                    }
 
                     .listItemWrapper{
                         position: relative;
                         margin: 12% 0 0;
                         display: flex;
                         align-items: flex-end;
+
+                        @media(min-width: 1000px){
+                            align-items: center;;
+                        }
                         
                         input[type=checkbox]{
                             position: relative;
                             cursor: pointer;
                             border: none;
+                            
+                            @media(min-width: 1000px){
+                                width: 2vw;
+                                height: 2vw;
+                            }
                             &:before{
                                 content: '';
                                 display: block;
@@ -151,6 +203,13 @@ body{
                                 background-color: $white;
                                 border: solid $white 2.5px;
                                 border-radius: 30%;
+                                
+                                @media(min-width: 1000px){
+                                    width: 2.5vw;
+                                    height: 2.5vw;
+                                    border: solid $prussian-blue .4vw;
+
+                                }
                             }
                             &:checked:after{
                                 content: '';
@@ -164,14 +223,27 @@ body{
                                 border: solid $white 2.5px;
                                 border-radius: 30%;
                                 
+
+                                @media(min-width: 1000px){
+                                    width: 2.5vw;
+                                    height: 2.5vw;
+                                    background-color: $skobeloff;
+                                    border: solid $prussian-blue .4vw;
+                                }
                             }
                         }
 
                         li{
+                            max-width: 100%;
                             padding-left: 5%;
                             color: $skobeloff;
                             font-size: 4.5vw;
                             list-style: none;
+
+                            @media(min-width: 1000px){
+                                padding-left: 3.5%;
+                                font-size: 3vw;
+                            }
                         }
                         
                     }
@@ -190,6 +262,10 @@ body{
                     color: $russian-violet;
                     font-size: 5vw;
 
+                    @media(min-width: 1000px){
+                        font-size: 4vw;
+                    }
+
                     &::placeholder{
                         font-style: italic;
                     }
@@ -198,6 +274,10 @@ body{
                         border-bottom: solid $white .8vw;
                         font-weight: bold;
                         outline: none;
+
+                        @media(min-width: 1000px){
+                            font-weight: 100;
+                        }
                     }
                 }
 
@@ -207,6 +287,12 @@ body{
                     border: none;
                     color: $prussian-blue;
                     font-size: 10vw;
+
+                    @media(min-width: 1000px){
+                        color: $russian-violet;
+                        padding: 0 3% 0 9%;
+                        font-size: 8vw;
+                    }
                 }
             }
         }
@@ -224,4 +310,16 @@ body{
 
     }
     
+    .mobile-only{
+        @media(min-width:1000px){
+            display: none;
+        }
+    }
+
+    .desktop-only{
+        display: none;
+        @media(min-width: 1000px){
+            display: block;
+        }
+    }
 }

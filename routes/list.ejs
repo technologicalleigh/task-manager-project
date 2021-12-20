@@ -11,15 +11,16 @@
 
     <div class="whiteboard-wrapper">
         <div class="whiteboard">
-            <div class="arrow-wrapper">
+            <div class="arrow-wrapper mobile-only">
                 <a class="arrow-icon" href="#0">
                     <span class="left-bar"></span>
                     <span class="right-bar"></span>
                 </a>
             </div>
-            <div class="date-time-wrapper">
+            <a class="home-nav desktop-only" href="#1">Home</a>
+            <!-- <div class="date-time-wrapper">
                 <h1 class="date"><%=date%><span><%=time%></span><span> <%=ampm%></span></h1>
-            </div>
+            </div> -->
             <div class="list">
                 <h2><%=listName%></h2>
                 <ul>
@@ -39,7 +40,7 @@
             </form>
         </div>
     </div>
-    <div class="background-tri"></div>
+    <div class="background-tri mobile-only"></div>
     
 </body>
 </html>
