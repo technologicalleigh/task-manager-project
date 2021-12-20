@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title><%=title%></title>
+    <link rel="stylesheet" href=<%=style%> type="text/css">
+</head>
+<body>
+
+    <div class="whiteboard-wrapper">
+        <div class="whiteboard">
+            <div class="arrow-wrapper">
+                <a class="arrow-icon" href="#0">
+                    <span class="left-bar"></span>
+                    <span class="right-bar"></span>
+                </a>
+            </div>
+            <div class="date-time-wrapper">
+                <h1 class="date"><%=date%><span><%=time%></span><span> <%=ampm%></span></h1>
+            </div>
+            <div class="list">
+                <h2><%=listName%></h2>
+                <ul>
+                    <% tasks.forEach(function(tasksInterval){ %>
+                        <form action="/deleteItem" method="post">
+                            <div class="listItemWrapper">
+                                <input type="checkbox" name="focused" value="<%=tasksInterval._id%>" onChange="submit()">
+                                <li class="listItem"><%=tasksInterval.description%></li>
+                            </div>
+                        </form>
+                   <% }); %>
+                </ul>
+            </div>
+            <form action="/" method="post">
+                <button type="submit" name="addButton">+</button>
+                <input type="text" placeholder="add a task" name="newTask">
+            </form>
+        </div>
+    </div>
+    <div class="background-tri"></div>
+    
+</body>
+</html>

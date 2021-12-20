@@ -26,7 +26,7 @@ switch(day){
     case(6):
         dayOfWeek = 'Saturday';
         break;
-    case(7):
+    case(0):
         dayOfWeek = 'Sunday';
         break;
 
@@ -106,6 +106,8 @@ switch(hour){
     case(23):
         getHour = 11;
         break;
+    default:
+        getHour = hour;
 }
 
 if(getHour<12){
