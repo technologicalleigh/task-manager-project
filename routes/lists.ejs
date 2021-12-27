@@ -19,30 +19,25 @@
                 </a>
             </div>
             <a class="home-nav desktop-only" href="/">Home</a>
-            <div class="date-time-wrapper mobile-only">
-                <h1 class="date"><%=date%><span> <%=time%></span><span> <%=ampm%></span></h1>
-            </div>
-            <div class="list">
-                <h2 class="listname"><%=listName%></h2>
-                <div class="date-time-wrapper desktop-only">
-                    <h1 class="date"><%=date%><span> <%=time%></span><span> <%=ampm%></span></h1>
-                </div>
+            <div class="lists">
+                <% if(errorTrue==true){ %>
+                    <h2><%=error%></h2>
+                <% } %>
+                <h2>Task Manager</h2>
                 <ul>
-                    <% tasks.forEach(function(tasksInterval){ %>
-                        <form action="/deleteCustomTask" method="post">
+                    <% lists.forEach(function(listInterval){ %>
+                        <form action="/deleteList" method="post">
                             <div class="listItemWrapper">
-                                <input type="checkbox" name="focused" value="<%=tasksInterval%>" onChange="submit()">
-                                <input type="hidden" name="listname" value="<%=listName%>">
-                                <li class="listItem"><%=tasksInterval%></li>
+                                <input type="checkbox" name="focused" value="<%=listInterval._id%>" onChange="submit()">
+                                <li class="listItem"><a href="/<%=listInterval.name%>"><%=listInterval.name%></a></li>
                             </div>
                         </form>
                    <% }); %>
                 </ul>
             </div>
-            <form action="/addCustomTask" method="post">
+            <form action="/lists" method="post">
                 <button type="submit" name="addButton">+</button>
-                <input type="text" placeholder="add a task" name="newTask">
-                <input type="hidden" name="listname" value="<%=listName%>">
+                <input type="text" placeholder="add a list of tasks" name="newList">
             </form>
         </div>
     </div>

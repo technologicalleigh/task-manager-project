@@ -118,7 +118,7 @@ if(getHour<12){
 
 var stringDate = dayOfWeek+' '+monthName+' '+numDate+', '+year;
 
-getTime = getHour+':'+ date.getMinutes();
+var getTime = getHour+':'+ date.getMinutes();
 
 var setDateProp = {
     date: stringDate,

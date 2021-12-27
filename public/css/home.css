@@ -109,7 +109,7 @@ body .whiteboard-wrapper .whiteboard .home-nav {
   top: 5%;
   left: 5%;
   color: #0B525B;
-  font-size: 4vw;
+  font-size: 2vw;
   text-decoration: none;
 }
 
@@ -133,6 +133,13 @@ body .whiteboard-wrapper .whiteboard .date-time-wrapper {
   z-index: 1;
 }
 
+@media (min-width: 1000px) {
+  body .whiteboard-wrapper .whiteboard .date-time-wrapper {
+    position: relative;
+    width: 100%;
+  }
+}
+
 body .whiteboard-wrapper .whiteboard .date-time-wrapper .date {
   margin: 5% 0 0;
   width: 46%;
@@ -141,8 +148,22 @@ body .whiteboard-wrapper .whiteboard .date-time-wrapper .date {
   text-align: center;
 }
 
+@media (min-width: 1000px) {
+  body .whiteboard-wrapper .whiteboard .date-time-wrapper .date {
+    margin: 1% 0 0;
+    width: 100%;
+    font-size: 1.5vw;
+  }
+}
+
 body .whiteboard-wrapper .whiteboard .date-time-wrapper .date span:nth-child(1) {
   padding-left: 6%;
+}
+
+@media (min-width: 1000px) {
+  body .whiteboard-wrapper .whiteboard .date-time-wrapper .date span:nth-child(1) {
+    padding-left: 0;
+  }
 }
 
 body .whiteboard-wrapper .whiteboard .date-time-wrapper .date span:nth-child(2) {
@@ -151,7 +172,14 @@ body .whiteboard-wrapper .whiteboard .date-time-wrapper .date span:nth-child(2) 
 }
 
 @media (min-width: 1000px) {
+  body .whiteboard-wrapper .whiteboard .date-time-wrapper .date span:nth-child(2) {
+    font-size: 1.5vw;
+  }
+}
+
+@media (min-width: 1000px) {
   body .whiteboard-wrapper .whiteboard .list {
+    position: relative;
     width: 100%;
     margin: 0;
   }
@@ -173,6 +201,7 @@ body .whiteboard-wrapper .whiteboard .list h2 {
     width: 100%;
     border-bottom: none;
     color: #212F45;
+    font-size: 4vw;
     text-align: center;
     -webkit-text-decoration: underline 0.3vw #4D194D;
             text-decoration: underline 0.3vw #4D194D;
@@ -185,6 +214,7 @@ body .whiteboard-wrapper .whiteboard .list ul {
 
 @media (min-width: 1000px) {
   body .whiteboard-wrapper .whiteboard .list ul {
+    margin: 3% 0 2%;
     padding: 0 0 0 9%;
   }
 }
@@ -202,6 +232,7 @@ body .whiteboard-wrapper .whiteboard .list ul .listItemWrapper {
 
 @media (min-width: 1000px) {
   body .whiteboard-wrapper .whiteboard .list ul .listItemWrapper {
+    margin: 2% 0 0;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -216,8 +247,8 @@ body .whiteboard-wrapper .whiteboard .list ul .listItemWrapper input[type=checkb
 
 @media (min-width: 1000px) {
   body .whiteboard-wrapper .whiteboard .list ul .listItemWrapper input[type=checkbox] {
-    width: 2vw;
-    height: 2vw;
+    width: 1.5vw;
+    height: 1.5vw;
   }
 }
 
@@ -236,8 +267,8 @@ body .whiteboard-wrapper .whiteboard .list ul .listItemWrapper input[type=checkb
 
 @media (min-width: 1000px) {
   body .whiteboard-wrapper .whiteboard .list ul .listItemWrapper input[type=checkbox]:before {
-    width: 2.5vw;
-    height: 2.5vw;
+    width: 1.5vw;
+    height: 1.5vw;
     border: solid #212F45 0.4vw;
   }
 }
@@ -257,8 +288,8 @@ body .whiteboard-wrapper .whiteboard .list ul .listItemWrapper input[type=checkb
 
 @media (min-width: 1000px) {
   body .whiteboard-wrapper .whiteboard .list ul .listItemWrapper input[type=checkbox]:checked:after {
-    width: 2.5vw;
-    height: 2.5vw;
+    width: 1.5vw;
+    height: 1.5vw;
     background-color: #212F45;
     border: solid #212F45 0.4vw;
   }
@@ -275,7 +306,7 @@ body .whiteboard-wrapper .whiteboard .list ul .listItemWrapper li {
 @media (min-width: 1000px) {
   body .whiteboard-wrapper .whiteboard .list ul .listItemWrapper li {
     padding-left: 3.5%;
-    font-size: 3vw;
+    font-size: 1.5vw;
   }
 }
 
@@ -298,7 +329,7 @@ body .whiteboard-wrapper .whiteboard form[action="/"] input[type="text"] {
 
 @media (min-width: 1000px) {
   body .whiteboard-wrapper .whiteboard form[action="/"] input[type="text"] {
-    font-size: 4vw;
+    font-size: 2vw;
   }
 }
 
@@ -316,6 +347,21 @@ body .whiteboard-wrapper .whiteboard form[action="/"] input[type="text"]::-ms-in
 
 body .whiteboard-wrapper .whiteboard form[action="/"] input[type="text"]::placeholder {
   font-style: italic;
+}
+
+@media (min-width: 1000px) {
+  body .whiteboard-wrapper .whiteboard form[action="/"] input[type="text"]::-webkit-input-placeholder {
+    font-size: 2vw;
+  }
+  body .whiteboard-wrapper .whiteboard form[action="/"] input[type="text"]:-ms-input-placeholder {
+    font-size: 2vw;
+  }
+  body .whiteboard-wrapper .whiteboard form[action="/"] input[type="text"]::-ms-input-placeholder {
+    font-size: 2vw;
+  }
+  body .whiteboard-wrapper .whiteboard form[action="/"] input[type="text"]::placeholder {
+    font-size: 2vw;
+  }
 }
 
 body .whiteboard-wrapper .whiteboard form[action="/"] input[type="text"]:focus {
@@ -341,8 +387,8 @@ body .whiteboard-wrapper .whiteboard form[action="/"] button[type="submit"] {
 @media (min-width: 1000px) {
   body .whiteboard-wrapper .whiteboard form[action="/"] button[type="submit"] {
     color: #4D194D;
-    padding: 0 3% 0 9%;
-    font-size: 8vw;
+    padding: 0 1.5% 0 9%;
+    font-size: 4vw;
   }
 }
 
@@ -359,7 +405,7 @@ body .background-tri {
 
 @media (min-width: 1000px) {
   body .mobile-only {
-    display: none;
+    display: none !important;
   }
 }
 
