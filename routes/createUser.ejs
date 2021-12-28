@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title><%=title%></title>
+    <link rel="stylesheet" href=<%=style%> type="text/css">
+    <link rel="icon" type="image/png" href="http://example.com/favicon.png">
+</head>
+<body>
+
+    <div class="whiteboard-wrapper">
+        <div class="whiteboard">
+            <div class="arrow-wrapper mobile-only">
+                <a class="arrow-icon" href="/">
+                    <span class="left-bar"></span>
+                    <span class="right-bar"></span>
+                </a>
+            </div>
+            <a class="home-nav desktop-only" href="/">Home</a>
+            <div class="create-user-wrap">
+                <h2>Create User</h2>
+                <form action="/addUser" method="post">
+                    <input type="text" placeholder="username" name="username">
+                    <input type="text" placeholder="firstname" name="firstname">
+                    <input type="text" placeholder="password" name="password">
+                    <button type="submit" name="createUser">create user</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="background-tri mobile-only"></div>
+    
+</body>
+</html>

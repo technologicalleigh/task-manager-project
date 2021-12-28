@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title><%=title%></title>
+    <link rel="stylesheet" href=<%=style%> type="text/css">
+    <link rel="icon" type="image/png" href="http://example.com/favicon.png">
+</head>
+<body>
+
+    <div class="whiteboard-wrapper">
+        <div class="whiteboard">
+            <div class="arrow-wrapper mobile-only">
+                <a class="arrow-icon" href="#0">
+                    <span class="left-bar"></span>
+                    <span class="right-bar"></span>
+                </a>
+            </div>
+            <a class="home-nav desktop-only" href="/">Home</a>
+            <div class="lists">
+                <h2>Can't create duplicate lists</h2>
+                <h2>Task Manager</h2>
+                <ul>
+                    <% lists.forEach(function(listInterval){ %>
+                        <form action="/deleteList" method="post">
+                            <div class="listItemWrapper">
+                                <input type="checkbox" name="focused" value="<%=listInterval._id%>" onChange="submit()">
+                                <li class="listItem"><a href="/<%=listInterval.name%>"><%=listInterval.name%></a></li>
+                            </div>
+                        </form>
+                   <% }); %>
+                </ul>
+            </div>
+            <form action="/duplicatedListPgAddList" method="post">
+                <button type="submit" name="addButton">+</button>
+                <input type="text" placeholder="add a list of tasks" name="newList">
+            </form>
+        </div>
+    </div>
+    <div class="background-tri mobile-only"></div>
+    
+</body>
+</html>
