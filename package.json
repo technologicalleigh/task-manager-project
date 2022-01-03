@@ -1,0 +1,32 @@
+{
+  "name": "task-manager-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/technologicalleigh/task-manager-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/technologicalleigh/task-manager-project/issues"
+  },
+  "homepage": "https://github.com/technologicalleigh/task-manager-project#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "css-select": "^4.2.0",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "htmlparser2": "^7.2.0",
+    "mongoose": "^6.1.2"
+  },
+  "devDependencies": {
+    "mongodb": "^4.2.1",
+    "nodemon": "^2.0.15"
+  }
+}

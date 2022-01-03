@@ -13,20 +13,22 @@
     <div class="whiteboard-wrapper">
         <div class="whiteboard">
             <div class="arrow-wrapper mobile-only">
-                <a class="arrow-icon" href="#0">
+                <a class="arrow-icon" href="/">
                     <span class="left-bar"></span>
                     <span class="right-bar"></span>
                 </a>
             </div>
             <a class="home-nav desktop-only" href="/">Home</a>
-        </div>
-        <div class="login-user-wrap">
-            <h2>login</h2>
-            <form action="/loginUser" method="post">
-                <input type="text" placeholder="username" name="username">
-                <input type="text" placeholder="password" name="password">
-                <button type="submit" name="loginUser">login</button>
-            </form>
+            <div class="create-user-wrap">
+                <h2>Username already taken. Try again, please!</h2>
+                <h2>Create User</h2>
+                <form action="/addUser" method="post">
+                    <input type="text" placeholder="username" name="username">
+                    <input type="text" placeholder="firstname" name="firstname">
+                    <input type="text" placeholder="password" name="password">
+                    <button type="submit" name="createUser">create user</button>
+                </form>
+            </div>
         </div>
     </div>
     <div class="background-tri mobile-only"></div>

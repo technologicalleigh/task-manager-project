@@ -1,20 +1,20 @@
+require('dotenv').config();
 const date = require(__dirname+'/modules/date');
 const express = require("express");
 const mongoose = require('mongoose');
 const htmlparser2 = require("htmlparser2");
 const CSSselect = require("css-select");
-const bodyParser= require('body-parser');
+const bodyParser= require('body-parser'); 
 const app = express();
 
-
-mongoose.connect('mongodb://localhost:27017/listItemsDB', {useNewUrlParser:true});
+mongoose.connect(process.env.DB_CONNECT, {useNewUrlParser:true});
 
 const userSchema = new mongoose.Schema({
     username: String,
     firstname: String,
     password: String,
     lists: {
-        name: String,
+        listname: String,
         taskItems: []
     }
 });
@@ -48,6 +48,17 @@ app.get('/createUser', (req, res)=> {
         title: "Home",
         style: "/css/home.css" 
    }); 
+
+   Users.find(function(err, foundUser){
+       console.log(foundUser);
+   });
+});
+
+app.get('/duplicateUser', (req, res)=> {
+    res.render('../routes/duplicateUser', {
+        title: "Home",
+        style: "/css/home.css" 
+   }); 
 });
 
 app.post('/addUser', (req, res) => {
@@ -58,7 +69,7 @@ app.post('/addUser', (req, res) => {
     console.log(req.body);
     console.log(userName + '\n' + firstName + '\n' + password);
 
-    Users.findOne({name: userName}, function(err, foundUser){
+    Users.findOne({username: userName}, function(err, foundUser){
         if(err){
             console.log(err);
         }else if(!foundUser){
@@ -68,35 +79,81 @@ app.post('/addUser', (req, res) => {
                 password: password
             });
             addUser.save();
-            res.redirect("/")
+            res.redirect("/");
         } else if(foundUser){
-           res.redirect('/userAlreadyExists')
+            console.log('user already created');
+            res.redirect('/duplicateUser');
         }
     });
 });
 
 app.get('/login', (req, res) => {
-    res.render('../routes/home', {
+    res.render('../routes/login', {
         title: "Home",
         style: "/css/home.css" 
    }); 
+
+   var userName= req.body.username;
+   var password= req.body.password;
+   //console.log(password);
+    // Users.findOne({name: userName}, function(err, foundUser){
+    //    if(err){
+    //        console.log(err);
+    //    }else if(!foundUser){
+    //      console.log("user not found");
+    //    }else if(foundUser){
+    //     console.log(foundUser);
+    //     if(password===foundUser.password){
+    //         console.log('password matches')
+    //         //res.redirect('/../routes/lists');
+    //     }
+      //}
+   //});
 });
 
 app.post('/loginUser', (req, res) => {
-    res.redirect('/lists');
+    var userName= req.body.username;
+    var password= req.body.password;
+
+    console.log(userName +'/n'+password); 
+
+     Users.findOne({username: userName}, function(err, foundUser){
+        if(err){
+            console.log(err);
+        }else if(!foundUser){
+          console.log("user not found");
+        }else if(foundUser){
+            console.log(foundUser.password);
+            if(password===foundUser.password){
+                var list = foundUser.lists;
+                var listName = list.listname;
+                console.log(list);
+                // res.render('../routes/lists', {
+                //     title: "Task Manager", 
+                //     style: "/css/home.css", 
+                //     date: date.date, 
+                //     time: date.time, 
+                //     ampm: date.isAmOrPm, 
+                //     lists: foundUser.lists[0]
+                // });
+            } else{
+                console.log('passwords don\'t match');
+            }
+        }
+    });
 });
 
 //task lists
 app.get("/lists", (req , res) => {
 
-    Lists.find({}, function(err, foundLists){
+    Users.find({user: username}, function(err, foundUser){
         res.render('../routes/lists', {
             title: "Task Manager", 
             style: "/css/home.css", 
             date: date.date, 
             time: date.time, 
             ampm: date.isAmOrPm, 
-            lists: foundLists,
+            lists: foundUser.lists
         });
     });
 
@@ -172,22 +229,22 @@ app.post('/duplicatedListPgAddList', (req, res) => {
 app.get("/:customListName", (req , res) => {
     const customName = req.params.customListName.toLowerCase();
 
-    Lists.findOne({name: customName}, function(err, customList){
-        if(err){
-            console.log(err)
-        }
+    // Lists.findOne({name: customName}, function(err, customList){
+    //     if(err){
+    //         console.log(err)
+    //     }
 
-        res.render('../routes/list', {
-                title: customName,
-                style: "/css/home.css",
-                date: date.date, 
-                time: date.time, 
-                ampm: date.isAmOrPm, 
-                listname: customName,
-                listName: customName, 
-                tasks: customList.tasksItems
-            });
-    });
+    //     res.render('../routes/list', {
+    //             title: customName,
+    //             style: "/css/home.css",
+    //             date: date.date, 
+    //             time: date.time, 
+    //             ampm: date.isAmOrPm, 
+    //             listname: customName,
+    //             listName: customName, 
+    //             tasks: customList.tasksItems
+    //         });
+    // });
 });
 
 
