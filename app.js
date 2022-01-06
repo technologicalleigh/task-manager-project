@@ -125,17 +125,19 @@ app.post('/loginUser', (req, res) => {
         }else if(foundUser){
             console.log(foundUser.password);
             if(password===foundUser.password){
-                var list = foundUser.lists;
-                var listName = list.listname;
-                console.log(list);
-                // res.render('../routes/lists', {
-                //     title: "Task Manager", 
-                //     style: "/css/home.css", 
-                //     date: date.date, 
-                //     time: date.time, 
-                //     ampm: date.isAmOrPm, 
-                //     lists: foundUser.lists[0]
-                // });
+                //var list = foundUser.lists.length();
+                if(!foundUser.lists.name){
+                    res.render('../routes/lists', {
+                        title: "Task Manager", 
+                        style: "/css/home.css", 
+                        date: date.date, 
+                        time: date.time, 
+                        ampm: date.isAmOrPm,
+                        name: foundUser.name,
+                        username: foundUser.username,
+                        lists: foundUser.lists
+                    });
+                }
             } else{
                 console.log('passwords don\'t match');
             }
@@ -161,20 +163,55 @@ app.get("/lists", (req , res) => {
 
 app.post('/lists', (req, res) => {
     var newList = req.body.newList;
+    var userName = req.body.username;
+
+    // var addList = new lists(newList);
+    // addList.listname = newList;
+
+    var newListObj = {
+        listname: newList,
+        taskItems: []
+    }
+
+    //console.log(username);
     
-    Lists.findOne({name: newList}, function(err, customList){
-        if(err){
-            console.log(err);
-        }else if(!customList){
-            var addList = new Lists({
-                name: newList,
-                tasksItems: []
-            });
-            addList.save();
-            res.redirect("/lists")
-        } else if(customList){
-           res.redirect('/duplicatedList')
-        }
+    Users.findOneAndUpdate({username: userName}, {"$set": {"userObjects.list": newListObj}}, function(err, foundUser){
+        
+        // foundUser.set(newListObj, function (err, res){
+        //     if(err){
+        //         console.log(err);
+        //     }
+        // });
+
+        // foundUser.list =  {
+        //     name: newList,
+        //     tasksItems: []
+        // }
+
+        // console.log(foundUser.list);
+
+        res.render('../routes/lists', {
+            title: "Task Manager", 
+            style: "/css/home.css", 
+            date: date.date, 
+            time: date.time, 
+            ampm: date.isAmOrPm,
+            name: foundUser.name,
+            username: foundUser.username,
+            lists: foundUser.lists,
+        });
+    //     if(err){
+    //         console.log(err);
+    //     }else if(!customList){
+    //         var addList = new Lists({
+    //             name: newList,
+    //             tasksItems: []
+    //         });
+    //         addList.save();
+    //         res.redirect("/lists")
+    //     } else if(customList){
+    //        res.redirect('/duplicatedList')
+    //     }
     });
 });
 

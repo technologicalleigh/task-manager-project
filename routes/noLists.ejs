@@ -20,25 +20,14 @@
             </div>
             <a class="home-nav desktop-only" href="/">Home</a>
             <div class="lists">
+                <h2>Welcome <%=name%></h2>
                 <h2>Task Manager</h2>
-                <ul>
-                    <% for(const property in lists){ %>
-                        <% if(property == "listname"){ 
-                            var listname = property;
-                            console.log(listname.name);
-                            }
-                        %>
-                        <form action="/deleteList" method="post">
-                            <div class="listItemWrapper">
-                            
-                            </div>
-                        </form>
-                   <% } %>
-                </ul>
             </div>
             <form action="/lists" method="post">
                 <button type="submit" name="addButton">+</button>
                 <input type="text" placeholder="add a list of tasks" name="newList">
+                <input type="hidden" name="username" value="<%=username%>">
+                
             </form>
         </div>
     </div>
